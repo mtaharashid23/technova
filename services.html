@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - TechNova</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #050508;
+            --bg-secondary: #0a0a12;
+            --bg-card: #0f0f1a;
+            --accent-blue: #6366f1;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-pink: #ec4899;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(99, 102, 241, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* LENIS */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+	pointer-events: none;
+}
+        body { font-family: 'Poppins', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; }
+
+        #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); }
+
+        .navbar {
+            background: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0; z-index: 1000; transition: all 0.4s ease;
+        }
+        .navbar-brand { font-size: 1.6rem; font-weight: 800; color: var(--text-primary) !important; display: flex; align-items: center; gap: 10px; }
+        .navbar-brand .brand-icon { width: 40px; height: 40px; background: var(--accent-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 0 30px rgba(99,102,241,0.5); transition: transform 0.4s; }
+        .navbar-brand:hover .brand-icon { transform: perspective(800px) rotateY(20deg) scale(1.1); }
+        .nav-link { color: var(--text-secondary) !important; font-weight: 500; font-size: 0.9rem; padding: 8px 20px !important; transition: all 0.3s; position: relative; margin: 0 3px; }
+        .nav-link:hover, .nav-link.active { color: var(--text-primary) !important; transform: translateY(-2px); }
+        .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 25px; height: 2px; background: var(--accent-gradient); border-radius: 2px; box-shadow: 0 0 10px var(--accent-blue); }
+        .btn-consultation { background: var(--accent-gradient); color: white; border: none; padding: 12px 28px; border-radius: 12px; font-weight: 600; font-size: 0.85rem; transition: all 0.4s; box-shadow: 0 8px 32px rgba(99,102,241,0.4); position: relative; overflow: hidden; }
+        .btn-consultation::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: left 0.6s; }
+        .btn-consultation:hover::before { left: 100%; }
+        .btn-consultation:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 45px rgba(99,102,241,0.6); color: white; }
+
+        .breadcrumb-section { padding: 25px 0; margin-top: 70px; }
+        .breadcrumb-item a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
+        .breadcrumb-item.active { color: var(--text-secondary); font-size: 0.85rem; }
+        .breadcrumb-item + .breadcrumb-item::before { color: var(--text-muted); }
+
+        .services-hero { padding: 30px 0 50px; text-align: center; position: relative; }
+        .services-hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .services-hero p { color: var(--text-secondary); font-size: 1.05rem; max-width: 550px; margin: 0 auto; }
+
+        .service-detail-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 45px;
+            margin-bottom: 30px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-detail-card:hover {
+            border-color: rgba(99, 102, 241, 0.35);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .service-detail-card .row { align-items: center; }
+        .service-detail-img { width: 100%; max-width: 420px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); }
+        .service-detail-content { padding: 10px 0; }
+        .service-detail-content h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; }
+        .service-detail-content > p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.8; margin-bottom: 25px; }
+
+        .service-features { list-style: none; padding: 0; margin-bottom: 28px; }
+        .service-features li {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+            color: var(--text-secondary); font-size: 0.9rem;
+            padding: 10px 16px; border-radius: 10px; transition: all 0.3s;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+        }
+        .service-features li:hover { background: rgba(99,102,241,0.08); transform: translateX(8px); border-color: rgba(99,102,241,0.2); }
+        .service-features li i { color: var(--accent-cyan); font-size: 0.8rem; min-width: 16px; }
+
+        .btn-quote {
+            background: var(--accent-gradient); color: white; border: none;
+            padding: 14px 30px; border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+            transition: all 0.4s; box-shadow: 0 10px 35px rgba(99,102,241,0.4);
+            display: inline-flex; align-items: center; gap: 10px; position: relative; overflow: hidden;
+        }
+        .btn-quote::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; }
+        .btn-quote:hover::before { left: 100%; }
+        .btn-quote:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 15px 45px rgba(99,102,241,0.5); color: white; }
+
+        .service-detail-card.reverse .row { flex-direction: row-reverse; }
+
+        .cta-section { padding: 80px 0; }
+        .cta-box {
+            background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 30px; padding: 55px; position: relative; overflow: hidden;
+            backdrop-filter: blur(25px); box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+        .cta-box::before { content: ''; position: absolute; top: -50%; right: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%); border-radius: 50%; filter: blur(70px); animation: heroGlow 6s ease-in-out infinite; }
+        @keyframes heroGlow { 0%,100% { opacity:0.5; transform:translate(-50%,-50%) scale(1); } 50% { opacity:0.9; transform:translate(-50%,-50%) scale(1.15); } }
+        .cta-box h3 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+        .cta-box p { color: var(--text-secondary); margin-bottom: 0; font-size: 1.05rem; }
+        .btn-cta { background: var(--accent-gradient); color: white; border: none; padding: 16px 36px; border-radius: 14px; font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: 12px; transition: all 0.4s; box-shadow: 0 10px 35px rgba(99,102,241,0.5); position: relative; z-index: 1; }
+        .btn-cta:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 18px 50px rgba(99,102,241,0.6); color: white; }
+
+        .footer { background: rgba(10,10,18,0.7); border-top: 1px solid var(--border-color); padding: 80px 0 30px; backdrop-filter: blur(20px); }
+        .footer-brand { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
+        .footer-brand .brand-icon { width: 35px; height: 35px; background: var(--accent-gradient); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 0 20px rgba(99,102,241,0.4); }
+        .footer-desc { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.8; max-width: 300px; }
+        .footer h6 { font-weight: 700; font-size: 1rem; margin-bottom: 25px; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; transition: all 0.3s; display: inline-block; }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(5px); }
+        .footer-contact-item { display: flex; gap: 12px; margin-bottom: 15px; color: var(--text-secondary); font-size: 0.88rem; align-items: center; }
+        .footer-contact-item i { color: var(--accent-blue); min-width: 20px; }
+        .social-links { display: flex; gap: 14px; }
+        .social-link { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 1rem; transition: all 0.4s; text-decoration: none; border: 1px solid rgba(255,255,255,0.08); }
+        .social-link:hover { background: var(--accent-gradient); color: white; transform: translateY(-6px) rotate(360deg); border-color: transparent; }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 30px; margin-top: 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-bottom p { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+        .footer-bottom-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; margin-left: 25px; transition: color 0.3s; }
+        .footer-bottom-links a:hover { color: var(--accent-blue); }
+
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #25d366, #128c7e); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; text-decoration: none; z-index: 999; box-shadow: 0 10px 30px rgba(37,211,102,0.4); transition: all 0.4s; animation: pulseWA 2s infinite; }
+        @keyframes pulseWA { 0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); } 50% { box-shadow: 0 0 0 18px rgba(37,211,102,0); } }
+        .whatsapp-btn:hover { transform: scale(1.15) rotate(10deg); color: white; }
+
+        .reveal { opacity: 0; transform: translateY(60px); }
+        .reveal-left { opacity: 0; transform: translateX(-60px); }
+        .reveal-right { opacity: 0; transform: translateX(60px); }
+
+        @media (max-width: 768px) {
+            .services-hero h1 { font-size: 2rem; }
+            .service-detail-card { padding: 28px; }
+            .cta-box { padding: 35px 25px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .service-detail-card.reverse .row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="starfield"></canvas>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><span class="brand-icon"><i class="fas fa-bolt"></i></span> TechNova</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="fas fa-bars text-white"></i></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn-consultation">Get Free Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb"><ol class="breadcrumb mb-0"><li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item active">Services</li></ol></nav>
+        </div>
+    </section>
+
+    <section class="services-hero">
+        <div class="container">
+            <h1 class="reveal">Our Services</h1>
+            <p class="reveal">Powerful solutions to help your business operate smarter and grow faster.</p>
+        </div>
+    </section>
+
+    <section class="container" style="padding-bottom: 80px;">
+        <!-- POS -->
+        <div class="service-detail-card reveal">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="https://img.freepik.com/free-photo/pos-system-with-receipt-printer_23-2149551729.jpg?w=500" alt="POS" class="service-detail-img">
+                </div>
+                <div class="col-lg-7">
+                    <div class="service-detail-content">
+                        <h3>POS Installation & Management</h3>
+                        <p>We provide complete POS solutions for retail, restaurants and businesses of all sizes. From installation to daily management, we ensure smooth operations.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Hardware & Software Installation</li>
+                            <li><i class="fas fa-check-circle"></i> Inventory & Sales Management</li>
+                            <li><i class="fas fa-check-circle"></i> Staff Training & Support</li>
+                            <li><i class="fas fa-check-circle"></i> Maintenance & Upgrades</li>
+                        </ul>
+                        <a href="#" class="btn btn-quote">Request a Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CMS -->
+        <div class="service-detail-card reverse reveal">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="https://img.freepik.com/free-photo/web-page-design-concept_23-2148437517.jpg?w=500" alt="CMS" class="service-detail-img">
+                </div>
+                <div class="col-lg-7">
+                    <div class="service-detail-content">
+                        <h3>CMS Solutions</h3>
+                        <p>Build fast, secure and reliable websites with our custom CMS solutions. Manage your content with ease.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Custom Website Development</li>
+                            <li><i class="fas fa-check-circle"></i> User-Friendly CMS</li>
+                            <li><i class="fas fa-check-circle"></i> SEO & Performance Optimization</li>
+                            <li><i class="fas fa-check-circle"></i> Ongoing Support</li>
+                        </ul>
+                        <a href="#" class="btn btn-quote">Request a Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI -->
+        <div class="service-detail-card reveal">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="https://img.freepik.com/free-photo/ai-technology-brain-circuit-background_53876-109456.jpg?w=500" alt="AI" class="service-detail-img">
+                </div>
+                <div class="col-lg-7">
+                    <div class="service-detail-content">
+                        <h3>AI Automation & Integration</h3>
+                        <p>Leverage the power of AI to automate repetitive tasks, improve customer experience and boost productivity.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Workflow Automation</li>
+                            <li><i class="fas fa-check-circle"></i> AI Chatbots & Assistants</li>
+                            <li><i class="fas fa-check-circle"></i> Data Analysis & Reporting</li>
+                            <li><i class="fas fa-check-circle"></i> API Integrations</li>
+                        </ul>
+                        <a href="#" class="btn btn-quote">Request a Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CRM -->
+        <div class="service-detail-card reverse reveal">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="https://img.freepik.com/free-photo/business-dashboard-screen-data-management_53876-130200.jpg?w=500" alt="CRM" class="service-detail-img">
+                </div>
+                <div class="col-lg-7">
+                    <div class="service-detail-content">
+                        <h3>CRM & ERP Solutions</h3>
+                        <p>Manage your customers, teams and resources efficiently with our powerful CRM & ERP systems.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Customer Relationship Management</li>
+                            <li><i class="fas fa-check-circle"></i> Sales & Inventory Management</li>
+                            <li><i class="fas fa-check-circle"></i> Business Process Automation</li>
+                            <li><i class="fas fa-check-circle"></i> Real-time Reports & Analytics</li>
+                        </ul>
+                        <a href="#" class="btn btn-quote">Request a Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Branding -->
+        <div class="service-detail-card reveal">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="https://img.freepik.com/free-photo/marketing-concept-with-social-media-icons_23-2149340689.jpg?w=500" alt="Branding" class="service-detail-img">
+                </div>
+                <div class="col-lg-7">
+                    <div class="service-detail-content">
+                        <h3>Branding & Marketing</h3>
+                        <p>Build your brand identity and reach the right audience with result-driven marketing strategies.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Brand Strategy & Identity</li>
+                            <li><i class="fas fa-check-circle"></i> Social Media Marketing</li>
+                            <li><i class="fas fa-check-circle"></i> Paid Ads Campaigns</li>
+                            <li><i class="fas fa-check-circle"></i> SEO & Content Marketing</li>
+                        </ul>
+                        <a href="#" class="btn btn-quote">Request a Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box reveal">
+                <div class="row align-items-center">
+                    <div class="col-lg-8"><h3>Have a Project in Mind?</h3><p>Let's discuss how we can help you achieve your goals.</p></div>
+                    <div class="col-lg-4 text-lg-end"><a href="#" class="btn btn-cta">Get Free Consultation <i class="fas fa-arrow-right"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4"><div class="footer-brand"><span class="brand-icon"><i class="fas fa-bolt"></i></span> TechNova</div><p class="footer-desc">We help businesses transform with technology, automation and creative marketing solutions.</p><div class="social-links mt-4"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-link"><i class="fab fa-instagram"></i></a><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-link"><i class="fab fa-twitter"></i></a></div></div>
+                <div class="col-lg-2 col-md-4"><h6>Quick Links</h6><ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#">About Us</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li></ul></div>
+                <div class="col-lg-3 col-md-4"><h6>Services</h6><ul class="footer-links"><li><a href="#">POS Systems</a></li><li><a href="#">CMS Solutions</a></li><li><a href="#">AI Automation</a></li><li><a href="#">CRM & ERP</a></li><li><a href="#">Branding & Marketing</a></li></ul></div>
+                <div class="col-lg-3 col-md-4"><h6>Contact</h6><div class="footer-contact-item"><i class="fas fa-phone"></i><span>+92 300 1234567</span></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@technova.pk</span></div><div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Lahore, Pakistan</span></div><h6 class="mt-4">Follow Us</h6><div class="social-links"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-link"><i class="fab fa-instagram"></i></a><a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-link"><i class="fab fa-twitter"></i></a></div></div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 TechNova. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></div></div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923001234567" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+            mouseMultiplier: 1,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                lenis.scrollTo(this.getAttribute("href"));
+            });
+        });
+        lenis.scrollTo("top");
+
+        // Stars
+        // ===== STARFIELD =====
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+        const numStars = 180;
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 1.8 + 0.3;
+                this.speed = Math.random() * 0.3 + 0.05;
+                this.opacity = Math.random() * 0.8 + 0.2;
+                this.twinkleSpeed = Math.random() * 0.015 + 0.005;
+                this.twinkleOffset = Math.random() * Math.PI * 2;
+            }
+            update(t) {
+                this.y -= this.speed;
+                if (this.y < -5) {
+                    this.reset();
+                    this.y = height + 5;
+                }
+                this.currentOpacity = this.opacity * (0.5 + 0.5 * Math.sin(t * this.twinkleSpeed + this
+                    .twinkleOffset));
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255,255,255,${this.currentOpacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < numStars; i++) stars.push(new Star());
+        }
+
+        function animateStars(time) {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(s => {
+                s.update(time);
+                s.draw();
+            });
+            requestAnimationFrame(animateStars);
+        }
+
+        resize();
+        initStars();
+        animateStars(0);
+        window.addEventListener('resize', () => {
+            resize();
+            initStars();
+        });
+
+        // GSAP
+        gsap.utils.toArray('.reveal').forEach(el => {
+            gsap.to(el, { scrollTrigger: { trigger: el, start: 'top 88%' }, opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' });
+        });
+
+        // Navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            nav.style.background = window.scrollY > 50 ? 'rgba(5,5,8,0.95)' : 'rgba(5,5,8,0.85)';
+            nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+        });
+    </script>
+</body>
+</html>
