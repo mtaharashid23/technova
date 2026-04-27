@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Portfolio - Stratrix Technology</title>
+    <title>Blog - Stratrix Technology</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -15,24 +15,19 @@
     <style>
         :root {
             --bg-primary: #050508;
-            --bg-card: #0f0f1a;
-            --accent-blue: #6366f1;
-            --accent-purple: #8b5cf6;
-            --accent-cyan: #06b6d4;
-            --accent-pink: #ec4899;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-            --text-primary: #ffffff;
+            --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            --text-primary: #fff;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
             --border-color: rgba(99, 102, 241, 0.2);
             --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.1)
         }
 
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box
         }
 
         /* LENIS */
@@ -61,7 +56,7 @@
             font-family: 'Poppins', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            overflow-x: hidden;
+            overflow-x: hidden
         }
 
         #starfield {
@@ -71,7 +66,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)
         }
 
         .navbar {
@@ -80,7 +75,7 @@
             border-bottom: 1px solid var(--border-color);
             padding: 15px 0;
             z-index: 1000;
-            transition: all 0.4s ease;
+            transition: all 0.4s
         }
 
         .navbar-brand {
@@ -89,7 +84,7 @@
             color: var(--text-primary) !important;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 10px
         }
 
         .navbar-brand .brand-icon {
@@ -102,11 +97,7 @@
             justify-content: center;
             font-size: 18px;
             box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
-            transition: transform 0.4s;
-        }
-
-        .navbar-brand:hover .brand-icon {
-            transform: perspective(800px) rotateY(20deg) scale(1.1);
+            transition: transform 0.4s
         }
 
         .nav-link {
@@ -114,27 +105,13 @@
             font-weight: 500;
             font-size: 0.9rem;
             padding: 8px 16px !important;
-            transition: all 0.3s;
-            position: relative;
+            transition: all 0.3s
         }
 
         .nav-link:hover,
         .nav-link.active {
             color: var(--text-primary) !important;
-            transform: translateY(-2px);
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 25px;
-            height: 2px;
-            background: var(--accent-gradient);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--accent-blue);
+            transform: translateY(-2px)
         }
 
         .btn-consultation {
@@ -147,98 +124,57 @@
             font-size: 0.85rem;
             transition: all 0.4s;
             box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-consultation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-            transition: left 0.6s;
-        }
-
-        .btn-consultation:hover::before {
-            left: 100%;
+            cursor: pointer
         }
 
         .btn-consultation:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 15px 45px rgba(99, 102, 241, 0.6);
-            color: white;
+            color: white
         }
 
         .breadcrumb-section {
             padding: 25px 0;
-            margin-top: 70px;
+            margin-top: 70px
         }
 
         .breadcrumb-item a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.85rem
         }
 
         .breadcrumb-item.active {
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.85rem
         }
 
-        .portfolio-hero {
-            padding: 30px 0 40px;
-            text-align: center;
+        .blog-hero {
+            padding: 40px 0 60px;
+            text-align: center
         }
 
-        .portfolio-hero h1 {
+        .blog-hero h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, #c7d2fe);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent
         }
 
-        .portfolio-hero p {
+        .blog-hero p {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto
         }
 
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 55px;
+        .blog-section {
+            padding: 80px 0
         }
 
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 11px 26px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--accent-gradient);
-            color: white;
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        }
-
-        .portfolio-card {
+        .blog-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
@@ -247,33 +183,32 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
             display: flex;
-            flex-direction: column;
+            flex-direction: column
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-15px) scale(1.02);
+        .blog-card:hover {
+            transform: translateY(-12px);
             border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.15)
         }
 
-        .portfolio-card-img-wrapper {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .portfolio-card-img {
+        .blog-card-img {
             width: 100%;
-            height: 230px;
+            height: 220px;
             object-fit: cover;
-            display: block;
-            transition: transform 0.6s ease;
+            transition: transform 0.5s
         }
 
-        .portfolio-card:hover .portfolio-card-img {
-            transform: scale(1.08);
+        .blog-card:hover .blog-card-img {
+            transform: scale(1.05)
         }
 
-        .portfolio-card-img-wrapper::after {
+        .blog-card-img-wrapper {
+            overflow: hidden;
+            position: relative
+        }
+
+        .blog-card-img-wrapper::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -282,201 +217,82 @@
             height: 50%;
             background: linear-gradient(transparent, rgba(5, 5, 8, 0.8));
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: opacity 0.4s
         }
 
-        .portfolio-card:hover .portfolio-card-img-wrapper::after {
-            opacity: 1;
+        .blog-card:hover .blog-card-img-wrapper::after {
+            opacity: 1
         }
 
-        .portfolio-card-body {
+        .blog-card-body {
             padding: 28px;
             flex: 1;
             display: flex;
-            flex-direction: column;
+            flex-direction: column
         }
 
-        .portfolio-tag {
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 0.8rem;
+            color: var(--text-muted)
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .blog-tag {
             display: inline-block;
-            padding: 5px 14px;
-            border-radius: 8px;
+            padding: 4px 12px;
+            border-radius: 6px;
             font-size: 0.72rem;
             font-weight: 600;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             width: fit-content;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .portfolio-tag.blue {
             background: rgba(99, 102, 241, 0.15);
-            color: #6366f1;
+            color: #6366f1
         }
 
-        .portfolio-tag.purple {
-            background: rgba(139, 92, 246, 0.15);
-            color: #8b5cf6;
-        }
-
-        .portfolio-tag.cyan {
-            background: rgba(6, 182, 212, 0.15);
-            color: #06b6d4;
-        }
-
-        .portfolio-tag.pink {
-            background: rgba(236, 72, 153, 0.15);
-            color: #ec4899;
-        }
-
-        .portfolio-tag.orange {
-            background: rgba(249, 115, 22, 0.15);
-            color: #f97316;
-        }
-
-        .portfolio-tag.green {
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-        }
-
-        .portfolio-card-body h5 {
+        .blog-card-body h5 {
             font-weight: 700;
             font-size: 1.1rem;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            line-height: 1.4
         }
 
-        .portfolio-card-body>p {
+        .blog-card-body>p {
             color: var(--text-secondary);
             font-size: 0.88rem;
             line-height: 1.6;
             margin-bottom: 18px;
+            flex: 1
         }
 
-        .portfolio-stats {
-            display: flex;
-            gap: 25px;
-            margin-top: auto;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .portfolio-stat {
-            flex: 1;
-        }
-
-        .portfolio-stat .value {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 2px;
-        }
-
-        .portfolio-stat .value.blue {
-            color: #6366f1;
-        }
-
-        .portfolio-stat .value.purple {
-            color: #8b5cf6;
-        }
-
-        .portfolio-stat .value.cyan {
-            color: #06b6d4;
-        }
-
-        .portfolio-stat .value.pink {
-            color: #ec4899;
-        }
-
-        .portfolio-stat .value.orange {
-            color: #f97316;
-        }
-
-        .portfolio-stat .value.green {
-            color: #10b981;
-        }
-
-        .portfolio-stat .label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .cta-section {
-            padding: 90px 0;
-        }
-
-        .cta-box {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 30px;
-            padding: 55px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(25px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -15%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(70px);
-            animation: heroGlow 6s ease-in-out infinite;
-        }
-
-        @keyframes heroGlow {
-
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 0.9;
-            }
-        }
-
-        .cta-box h3 {
-            font-size: 1.7rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .cta-box p {
-            color: var(--text-secondary);
-            margin-bottom: 0;
-        }
-
-        .btn-cta {
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            padding: 16px 36px;
-            border-radius: 14px;
+        .blog-read-more {
+            color: var(--accent-blue);
+            font-size: 0.88rem;
             font-weight: 600;
-            font-size: 1rem;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.4s;
-            box-shadow: 0 10px 35px rgba(99, 102, 241, 0.5);
-            position: relative;
-            z-index: 1;
+            gap: 8px;
+            transition: all 0.3s
         }
 
-        .btn-cta:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 18px 50px rgba(99, 102, 241, 0.6);
-            color: white;
+        .blog-read-more:hover {
+            gap: 14px;
+            color: var(--accent-purple)
         }
 
         .footer {
             background: rgba(10, 10, 18, 0.7);
             border-top: 1px solid var(--border-color);
             padding: 80px 0 30px;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px)
         }
 
         .footer-brand {
@@ -485,7 +301,7 @@
             gap: 10px;
             font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 20px
         }
 
         .footer-brand .brand-icon {
@@ -497,29 +313,29 @@
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4)
         }
 
         .footer-desc {
             color: var(--text-secondary);
             font-size: 0.88rem;
             line-height: 1.8;
-            max-width: 300px;
+            max-width: 300px
         }
 
         .footer h6 {
             font-weight: 700;
             font-size: 1rem;
-            margin-bottom: 25px;
+            margin-bottom: 25px
         }
 
         .footer-links {
             list-style: none;
-            padding: 0;
+            padding: 0
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 12px
         }
 
         .footer-links a {
@@ -527,12 +343,12 @@
             text-decoration: none;
             font-size: 0.88rem;
             transition: all 0.3s;
-            display: inline-block;
+            display: inline-block
         }
 
         .footer-links a:hover {
             color: var(--accent-blue);
-            transform: translateX(5px);
+            transform: translateX(5px)
         }
 
         .footer-contact-item {
@@ -541,17 +357,17 @@
             margin-bottom: 15px;
             color: var(--text-secondary);
             font-size: 0.88rem;
-            align-items: center;
+            align-items: center
         }
 
         .footer-contact-item i {
             color: var(--accent-blue);
-            min-width: 20px;
+            min-width: 20px
         }
 
         .social-links {
             display: flex;
-            gap: 14px;
+            gap: 14px
         }
 
         .social-link {
@@ -566,14 +382,14 @@
             font-size: 1rem;
             transition: all 0.4s;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08)
         }
 
         .social-link:hover {
             background: var(--accent-gradient);
             color: white;
             transform: translateY(-6px) rotate(360deg);
-            border-color: transparent;
+            border-color: transparent
         }
 
         .footer-bottom {
@@ -584,13 +400,13 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 20px
         }
 
         .footer-bottom p {
             color: var(--text-muted);
             font-size: 0.85rem;
-            margin: 0;
+            margin: 0
         }
 
         .footer-bottom-links a {
@@ -598,7 +414,7 @@
             text-decoration: none;
             font-size: 0.85rem;
             margin-left: 25px;
-            transition: color 0.3s;
+            transition: color 0.3s
         }
 
         .whatsapp-btn {
@@ -618,27 +434,27 @@
             z-index: 999;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
             transition: all 0.4s;
-            animation: pulseWA 2s infinite;
+            animation: pulseWA 2s infinite
         }
 
         @keyframes pulseWA {
 
             0%,
             100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6)
             }
 
             50% {
-                box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+                box-shadow: 0 0 0 18px rgba(37, 211, 102, 0)
             }
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(60px)
         }
 
-        /* ===== MODAL / POPUP ===== */
+        /* MODAL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -653,13 +469,13 @@
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
-            padding: 20px;
+            transition: all 0.4s;
+            padding: 20px
         }
 
         .modal-overlay.active {
             opacity: 1;
-            visibility: visible;
+            visibility: visible
         }
 
         .modal-box {
@@ -673,13 +489,13 @@
             position: relative;
             transform: scale(0.9) translateY(30px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 60px rgba(99, 102, 241, 0.15);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
             max-height: 90vh;
-            overflow-y: auto;
+            overflow-y: auto
         }
 
         .modal-overlay.active .modal-box {
-            transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0)
         }
 
         .modal-close {
@@ -697,32 +513,32 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s
         }
 
         .modal-close:hover {
             background: rgba(255, 255, 255, 0.12);
             color: white;
-            transform: rotate(90deg);
+            transform: rotate(90deg)
         }
 
         .modal-box h3 {
             font-size: 1.6rem;
             font-weight: 800;
             margin-bottom: 8px;
-            background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+            background: linear-gradient(135deg, #fff, #c7d2fe);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent
         }
 
         .modal-box .modal-subtitle {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            margin-bottom: 30px;
+            margin-bottom: 30px
         }
 
         .modal-form .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 18px
         }
 
         .modal-form label {
@@ -730,7 +546,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 8px;
-            color: var(--text-secondary);
+            color: var(--text-secondary)
         }
 
         .modal-form input,
@@ -745,12 +561,12 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             transition: all 0.3s;
-            outline: none;
+            outline: none
         }
 
         .modal-form input::placeholder,
         .modal-form textarea::placeholder {
-            color: var(--text-muted);
+            color: var(--text-muted)
         }
 
         .modal-form input:focus,
@@ -758,22 +574,22 @@
         .modal-form textarea:focus {
             border-color: var(--accent-blue);
             box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.06)
         }
 
         .modal-form select {
             appearance: none;
-            cursor: pointer;
+            cursor: pointer
         }
 
         .modal-form select option {
             background: #0f0f1a;
-            color: white;
+            color: white
         }
 
         .modal-form textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 100px
         }
 
         .modal-form .btn-submit {
@@ -789,55 +605,49 @@
             transition: all 0.4s;
             box-shadow: 0 10px 35px rgba(99, 102, 241, 0.4);
             font-family: 'Poppins', sans-serif;
-            margin-top: 10px;
+            margin-top: 10px
         }
 
         .modal-form .btn-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 45px rgba(99, 102, 241, 0.5);
+            box-shadow: 0 15px 45px rgba(99, 102, 241, 0.5)
         }
 
         .form-row {
             display: flex;
-            gap: 15px;
+            gap: 15px
         }
 
         .form-row .form-group {
-            flex: 1;
+            flex: 1
         }
 
-        @media (max-width: 576px) {
+        @media(max-width:576px) {
             .form-row {
                 flex-direction: column;
-                gap: 0;
+                gap: 0
             }
 
             .modal-box {
-                padding: 30px 25px;
+                padding: 30px 25px
             }
         }
 
-        @media (max-width: 768px) {
-            .portfolio-hero h1 {
-                font-size: 2rem;
-            }
-
-            .cta-box {
-                padding: 35px 25px;
+        @media(max-width:768px) {
+            .blog-hero h1 {
+                font-size: 2rem
             }
 
             .footer-bottom {
                 flex-direction: column;
-                text-align: center;
+                text-align: center
             }
         }
     </style>
 </head>
 
 <body>
-
     <canvas id="starfield"></canvas>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html"><span class="brand-icon"><i class="fas fa-bolt"></i></span>
@@ -846,9 +656,8 @@
                 data-bs-target="#navbarNav"><i class="fas fa-bars text-white"></i></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="services.html" role="button"
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
                             data-bs-toggle="dropdown">Services</a>
                         <ul class="dropdown-menu dropdown-menu-dark"
                             style="background:rgba(15,15,26,0.98);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;margin-top:10px;">
@@ -871,198 +680,120 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <button class="btn-consultation open-modal" data-type="consultation">Get Free Consultation</button>
             </div>
         </div>
     </nav>
-
     <section class="breadcrumb-section">
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Portfolio</li>
+                    <li class="breadcrumb-item active">Blog</li>
                 </ol>
             </nav>
         </div>
     </section>
-
-    <section class="portfolio-hero">
+    <section class="blog-hero">
         <div class="container">
-            <h1 class="reveal">Our Portfolio</h1>
-            <p class="reveal">Explore our recent projects and see how we deliver real results.</p>
+            <h1 class="reveal">Our Blog</h1>
+            <p class="reveal">Insights, tips and latest trends in technology and business.</p>
         </div>
     </section>
-
-    <section class="container" style="padding-bottom: 70px;">
-        <div class="filter-buttons reveal">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">POS Systems</button>
-            <button class="filter-btn">AI Automation</button>
-            <button class="filter-btn">CRM / ERP</button>
-            <button class="filter-btn">Branding & Marketing</button>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-card-img-wrapper">
-                        <img src="https://img.freepik.com/free-photo/pos-system-with-receipt-printer_23-2149551729.jpg?w=500"
-                            alt="POS" class="portfolio-card-img">
-                    </div>
-                    <div class="portfolio-card-body">
-                        <span class="portfolio-tag blue">POS Systems</span>
-                        <h5>Retail POS Implementation</h5>
-                        <p>Complete POS solution for a retail chain with inventory integration.</p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <div class="value blue">40%</div>
-                                <div class="label">Faster Billing</div>
-                            </div>
-                            <div class="portfolio-stat">
-                                <div class="value blue">30%</div>
-                                <div class="label">Reduced Errors</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-card-img-wrapper">
-                        <img src="https://img.freepik.com/free-photo/chatbot-concept-illustration_114360-7988.jpg?w=500"
-                            alt="AI Chatbot" class="portfolio-card-img">
-                    </div>
-                    <div class="portfolio-card-body">
-                        <span class="portfolio-tag purple">AI Automation</span>
-                        <h5>AI Chatbot for E-commerce</h5>
-                        <p>AI chatbot to handle customer inquiries and boost conversions.</p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <div class="value purple">55%</div>
-                                <div class="label">Response Time</div>
-                            </div>
-                            <div class="portfolio-stat">
-                                <div class="value purple">25%</div>
-                                <div class="label">More Conversions</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-card-img-wrapper">
-                        <img src="https://img.freepik.com/free-photo/business-dashboard-screen-data-management_53876-130200.jpg?w=500"
-                            alt="CRM" class="portfolio-card-img">
-                    </div>
-                    <div class="portfolio-card-body">
-                        <span class="portfolio-tag cyan">CRM / ERP</span>
-                        <h5>CRM for Real Estate</h5>
-                        <p>Custom CRM to manage leads, clients and property listings.</p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <div class="value cyan">35%</div>
-                                <div class="label">More Leads</div>
-                            </div>
-                            <div class="portfolio-stat">
-                                <div class="value cyan">28%</div>
-                                <div class="label">Better Closing</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-card-img-wrapper">
-                        <img src="https://img.freepik.com/free-photo/flat-lay-coffee-cup-branding_23-2149242843.jpg?w=500"
-                            alt="Cafe" class="portfolio-card-img">
-                    </div>
-                    <div class="portfolio-card-body">
-                        <span class="portfolio-tag pink">Branding</span>
-                        <h5>Branding for Cafe Cloud</h5>
-                        <p>Brand identity and social media strategy for a cafe brand.</p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <div class="value pink">3X</div>
-                                <div class="label">Social Reach</div>
-                            </div>
-                            <div class="portfolio-stat">
-                                <div class="value pink">2.5X</div>
-                                <div class="label">Engagement</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-card-img-wrapper">
-                        <img src="https://img.freepik.com/free-photo/business-dashboard-screen-data-management_53876-130200.jpg?w=500"
-                            alt="ERP" class="portfolio-card-img">
-                    </div>
-                    <div class="portfolio-card-body">
-                        <span class="portfolio-tag orange">ERP Solution</span>
-                        <h5>ERP for Manufacturing</h5>
-                        <p>End-to-end ERP to manage production and inventory.</p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <div class="value orange">20%</div>
-                                <div class="label">Cost Savings</div>
-                            </div>
-                            <div class="portfolio-stat">
-                                <div class="value orange">45%</div>
-                                <div class="label">Efficiency Boost</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-card-img-wrapper">
-                        <img src="https://img.freepik.com/free-photo/web-page-design-concept_23-2148437517.jpg?w=500"
-                            alt="Website" class="portfolio-card-img">
-                    </div>
-                    <div class="portfolio-card-body">
-                        <span class="portfolio-tag green">Website / CMS</span>
-                        <h5>Corporate Website</h5>
-                        <p>Modern CMS website for a technology company.</p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <div class="value green">60%</div>
-                                <div class="label">Page Speed</div>
-                            </div>
-                            <div class="portfolio-stat">
-                                <div class="value green">70%</div>
-                                <div class="label">More Traffic</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
+    <section class="blog-section">
         <div class="container">
-            <div class="cta-box reveal">
-                <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <h3>Want to be our next success story?</h3>
-                        <p>Let's build something great together.</p>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card reveal">
+                        <div class="blog-card-img-wrapper"><img
+                                src="https://img.freepik.com/free-photo/ai-technology-brain-circuit-background_53876-109456.jpg?w=500"
+                                alt="Blog" class="blog-card-img"></div>
+                        <div class="blog-card-body"><span class="blog-tag">AI & Automation</span>
+                            <div class="blog-meta"><span><i class="far fa-calendar"></i> Mar 15, 2026</span><span><i
+                                        class="far fa-clock"></i> 5 min read</span></div>
+                            <h5>How AI is Transforming Retail Businesses in 2026</h5>
+                            <p>Discover how artificial intelligence is revolutionizing the retail industry with smart
+                                automation.</p><a href="#" class="blog-read-more">Read More <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
-                    <div class="col-lg-4 text-lg-end"><a href="#" class="btn btn-cta">Start Your Project <i
-                                class="fas fa-arrow-right"></i></a></div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card reveal">
+                        <div class="blog-card-img-wrapper"><img
+                                src="https://img.freepik.com/free-photo/web-page-design-concept_23-2148437517.jpg?w=500"
+                                alt="Blog" class="blog-card-img"></div>
+                        <div class="blog-card-body"><span class="blog-tag">CMS</span>
+                            <div class="blog-meta"><span><i class="far fa-calendar"></i> Feb 28, 2026</span><span><i
+                                        class="far fa-clock"></i> 4 min read</span></div>
+                            <h5>Why Your Business Needs a Custom CMS Solution</h5>
+                            <p>Learn why off-the-shelf solutions may not be enough for your growing business needs.</p>
+                            <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card reveal">
+                        <div class="blog-card-img-wrapper"><img
+                                src="https://img.freepik.com/free-photo/pos-system-with-receipt-printer_23-2149551729.jpg?w=500"
+                                alt="Blog" class="blog-card-img"></div>
+                        <div class="blog-card-body"><span class="blog-tag">POS</span>
+                            <div class="blog-meta"><span><i class="far fa-calendar"></i> Feb 10, 2026</span><span><i
+                                        class="far fa-clock"></i> 6 min read</span></div>
+                            <h5>5 Signs You Need to Upgrade Your POS System</h5>
+                            <p>Is your current POS system holding your business back? Here are the warning signs.</p><a
+                                href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card reveal">
+                        <div class="blog-card-img-wrapper"><img
+                                src="https://img.freepik.com/free-photo/marketing-concept-with-social-media-icons_23-2149340689.jpg?w=500"
+                                alt="Blog" class="blog-card-img"></div>
+                        <div class="blog-card-body"><span class="blog-tag">Marketing</span>
+                            <div class="blog-meta"><span><i class="far fa-calendar"></i> Jan 22, 2026</span><span><i
+                                        class="far fa-clock"></i> 7 min read</span></div>
+                            <h5>Digital Marketing Strategies for Small Businesses</h5>
+                            <p>Effective marketing strategies that won't break the bank for small business owners.</p><a
+                                href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card reveal">
+                        <div class="blog-card-img-wrapper"><img
+                                src="https://img.freepik.com/free-photo/business-dashboard-screen-data-management_53876-130200.jpg?w=500"
+                                alt="Blog" class="blog-card-img"></div>
+                        <div class="blog-card-body"><span class="blog-tag">CRM & ERP</span>
+                            <div class="blog-meta"><span><i class="far fa-calendar"></i> Jan 05, 2026</span><span><i
+                                        class="far fa-clock"></i> 5 min read</span></div>
+                            <h5>CRM vs ERP: Which One Does Your Business Need?</h5>
+                            <p>Understanding the difference between CRM and ERP systems and when to use each.</p><a
+                                href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card reveal">
+                        <div class="blog-card-img-wrapper"><img
+                                src="https://img.freepik.com/free-photo/illustration-smartphone-with-graph-screen_23-2149396628.jpg?w=500"
+                                alt="Blog" class="blog-card-img"></div>
+                        <div class="blog-card-body"><span class="blog-tag">Technology</span>
+                            <div class="blog-meta"><span><i class="far fa-calendar"></i> Dec 18, 2023</span><span><i
+                                        class="far fa-clock"></i> 8 min read</span></div>
+                            <h5>The Future of Business Technology: Trends to Watch</h5>
+                            <p>Key technology trends that will shape how businesses operate in the coming years.</p><a
+                                href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
@@ -1125,7 +856,6 @@
             </div>
         </div>
     </footer>
-
     <a href="https://wa.me/923001234567" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <div class="modal-overlay" id="modalOverlay">
@@ -1267,7 +997,10 @@
             resize();
             initStars();
         });
-
+        window.addEventListener('resize', () => {
+            resize();
+            initStars()
+        });
         gsap.utils.toArray('.reveal').forEach(el => {
             gsap.to(el, {
                 scrollTrigger: {
@@ -1278,20 +1011,12 @@
                 y: 0,
                 duration: 0.9,
                 ease: 'power3.out'
-            });
-        });
-
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
+            })
+        });        
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.navbar');
             nav.style.background = window.scrollY > 50 ? 'rgba(5,5,8,0.95)' : 'rgba(5,5,8,0.85)';
-            nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+            nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none'
         });
     </script>
 </body>
